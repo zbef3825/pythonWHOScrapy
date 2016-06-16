@@ -17,7 +17,7 @@ class countryVirusPL(object):
             'lastUpdated': 'null'
         }
 
-        last_row = requests.get("http://localhost:3000/api/get/lastrow")
+        last_row = requests.get("https://afternoon-garden-52459.herokuapp.com/api/get/lastrow")
 
         if last_row.json()['success']:
             self.last_updated["virusName"] = last_row.json()['list'][0]['virusname'].encode('utf-8')
@@ -27,14 +27,16 @@ class countryVirusPL(object):
         print ".........................Pipeline Initiated..........................."
 
     def uploading(self, uploading_data):
-        time.sleep(1)
+        time.sleep(5)
         outbreak = {
             "virusName": uploading_data['virusName'],
             "country": uploading_data['country'],
             "lastUpdated": uploading_data['lastUpdated']
         }
         # print json.dumps(outbreak)
-        uploading_row = requests.post("http://localhost:3000/api/post", data=json.dumps(outbreak), headers=self.headers)
+        # http://localhost:3000/api/post
+        # https://afternoon-garden-52459.herokuapp.com/api/post
+        uploading_row = requests.post("https://afternoon-garden-52459.herokuapp.com/api/post", data=json.dumps(outbreak), headers=self.headers)
         print uploading_row.text
         if uploading_row.status_code == 200:
             print ".....................Data Saved.........................."
