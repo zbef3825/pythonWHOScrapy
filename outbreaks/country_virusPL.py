@@ -41,7 +41,7 @@ class countryVirusPL(object):
         # http://localhost:3000/api/post
         # https://afternoon-garden-52459.herokuapp.com/api/post
         print self.result_array
-        uploading_row = requests.post("http://localhost:3000/api/post", data=json.dumps(self.result_array),
+        uploading_row = requests.post("https://afternoon-garden-52459.herokuapp.com/api/post", data=json.dumps(self.result_array),
                                       headers=self.headers)
         # print uploading_row.text
         if uploading_row.status_code == 200:
